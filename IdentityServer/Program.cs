@@ -1,15 +1,32 @@
+using CompanyEmployees.OAuth.Extensions;
 using IdentityServer.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddIdentityServer()
-         .AddInMemoryApiScopes(InMemoryConfig.GetApiScopes())
-        .AddInMemoryApiResources(InMemoryConfig.GetApiResources())
-        .AddInMemoryIdentityResources(InMemoryConfig.GetIdentityResources())
-        .AddTestUsers(InMemoryConfig.GetUsers())
-        .AddInMemoryClients(InMemoryConfig.GetClients())
-        .AddDeveloperSigningCredential(); //not something we want to use in a production environment;
+//builder.Services.AddIdentityServer()
+//         .AddInMemoryApiScopes(InMemoryConfig.GetApiScopes())
+//        .AddInMemoryApiResources(InMemoryConfig.GetApiResources())
+//        .AddInMemoryIdentityResources(InMemoryConfig.GetIdentityResources())
+//        .AddTestUsers(InMemoryConfig.GetUsers())
+//        .AddInMemoryClients(InMemoryConfig.GetClients())
+//        .AddDeveloperSigningCredential(); //not something we want to use in a production environment;
 
+var migrationAssembly = "IdentityServer";
+
+builder.Services.AddIdentityServer()
+        .AddTestUsers(InMemoryConfig.GetUsers())
+        .AddDeveloperSigningCredential() //not something we want to use in a production environment
+        .AddConfigurationStore(opt =>
+        {
+            opt.ConfigureDbContext = c => c.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection"),
+                sql => sql.MigrationsAssembly(migrationAssembly));
+        })
+        .AddOperationalStore(opt =>
+        {
+            opt.ConfigureDbContext = o => o.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection"),
+                sql => sql.MigrationsAssembly(migrationAssembly));
+        });
 
 builder.Services.AddControllersWithViews();
 
@@ -32,5 +49,5 @@ app.UseEndpoints(endpoints =>
 });
 
 //app.MapGet("/", () => "Idenity Server");
-
+app.MigrateDatabase();
 app.Run();

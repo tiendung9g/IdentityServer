@@ -41,9 +41,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyEmployees.Client", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client_Clone", "Client_Clone", "{E171B90C-C22E-4110-840D-8A9AB21B2E52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientMVC", "ClientMVC\ClientMVC.csproj", "{EA146529-68EA-45E8-9D55-D538C09766F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientMVC", "ClientMVC\ClientMVC.csproj", "{EA146529-68EA-45E8-9D55-D538C09766F3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyEmployees.Client", "identity-server-4-aspnetcore\CompanyEmployees.Client\CompanyEmployees.Client\CompanyEmployees.Client.csproj", "{6081BEFB-B6DD-4A40-8B85-C3F9377F2044}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyEmployees.OAuth", "identity-server-4-aspnetcore\CompanyEmployees.OAuth\CompanyEmployees.OAuth\CompanyEmployees.OAuth.csproj", "{EE21643F-4E47-4C45-B4A5-91BF7739054C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,6 +121,10 @@ Global
 		{6081BEFB-B6DD-4A40-8B85-C3F9377F2044}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6081BEFB-B6DD-4A40-8B85-C3F9377F2044}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6081BEFB-B6DD-4A40-8B85-C3F9377F2044}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE21643F-4E47-4C45-B4A5-91BF7739054C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE21643F-4E47-4C45-B4A5-91BF7739054C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE21643F-4E47-4C45-B4A5-91BF7739054C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE21643F-4E47-4C45-B4A5-91BF7739054C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

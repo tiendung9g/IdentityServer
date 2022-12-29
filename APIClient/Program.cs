@@ -2,7 +2,6 @@ using Contracts;
 using Entities;
 using Microsoft.EntityFrameworkCore;
 using Repository;
-using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 

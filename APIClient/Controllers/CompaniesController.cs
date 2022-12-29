@@ -3,8 +3,6 @@ using Contracts;
 using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 
 namespace CompanyEmployees.Controllers
 {
