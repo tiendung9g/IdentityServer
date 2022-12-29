@@ -1,4 +1,3 @@
-using CompanyEmployees.OAuth.Extensions;
 using IdentityServer.Configuration;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,11 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 //        .AddInMemoryClients(InMemoryConfig.GetClients())
 //        .AddDeveloperSigningCredential(); //not something we want to use in a production environment;
 
+builder.Services.AddRazorPages();
+
 var migrationAssembly = "IdentityServer";
 
 builder.Services.AddIdentityServer()
         .AddTestUsers(InMemoryConfig.GetUsers())
-        .AddDeveloperSigningCredential() //not something we want to use in a production environment
+        //.AddDeveloperSigningCredential() //not something we want to use in a production environment
         .AddConfigurationStore(opt =>
         {
             opt.ConfigureDbContext = c => c.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection"),
@@ -43,11 +44,13 @@ app.UseRouting();
 app.UseIdentityServer();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapDefaultControllerRoute();
-});
+app.MapRazorPages()
+    .RequireAuthorization();
+//app.UseEndpoints(endpoints =>
+//{
+//    endpoints.MapDefaultControllerRoute();
+//});
 
 //app.MapGet("/", () => "Idenity Server");
-app.MigrateDatabase();
+//app.MigrateDatabase();
 app.Run();
