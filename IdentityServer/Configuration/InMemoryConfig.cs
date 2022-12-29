@@ -11,7 +11,11 @@ namespace IdentityServer.Configuration
             new List<IdentityResource>
             {
                 new IdentityResources.OpenId(),
-                new IdentityResources.Profile()
+                new IdentityResources.Profile(),
+                new IdentityResources.Address(),
+                new IdentityResource("roles", "User role(s)", new List<string> { "role" }),
+                       new IdentityResource("position", "Your position", new List<string> { "position" }),
+        new IdentityResource("country", "Your country", new List<string> { "country" })
             };
 
         public static List<TestUser> GetUsers() =>
@@ -25,7 +29,11 @@ namespace IdentityServer.Configuration
                       Claims = new List<Claim>
                       {
                           new Claim("given_name", "Mick"),
-                          new Claim("family_name", "Mining")
+                          new Claim("family_name", "Mining"),
+                          new Claim("address", "Sunny Street 4"),
+                          new Claim("role", "Admin"),
+                          new Claim("position", "Administrator"),
+                new Claim("country", "USA")
                       }
                   },
                   new TestUser
@@ -36,7 +44,11 @@ namespace IdentityServer.Configuration
                       Claims = new List<Claim>
                       {
                           new Claim("given_name", "Jane"),
-                          new Claim("family_name", "Downing")
+                          new Claim("family_name", "Downing"),
+                          new Claim("address", "Long Avenue 289"),
+                          new Claim("role", "Visitor"),
+                                        new Claim("position", "Viewer"),
+                new Claim("country", "USA")
                       }
                   }
               };
@@ -58,9 +70,11 @@ namespace IdentityServer.Configuration
                     AllowedGrantTypes = GrantTypes.Hybrid,
                     RedirectUris = new List<string>{ "https://localhost:5010/signin-oidc" },
                     RequirePkce = false,
-                    AllowedScopes = { IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile },
+                    AllowedScopes = { IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile,IdentityServerConstants.StandardScopes.Address ,"roles","companyApi" ,"position",
+    "country"},
                     ClientSecrets = { new Secret("MVCSecret".Sha512()) },
-                   PostLogoutRedirectUris = new List<string> { "https://localhost:5010/signout-callback-oidc" }
+                   PostLogoutRedirectUris = new List<string> { "https://localhost:5010/signout-callback-oidc" },
+                   RequireConsent = true
                 }
             };
 
