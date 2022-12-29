@@ -1,7 +1,7 @@
 ﻿
+using Duende.IdentityServer.EntityFramework.DbContexts;
+using Duende.IdentityServer.EntityFramework.Mappers;
 using IdentityServer.Configuration;
-using IdentityServer4.EntityFramework.DbContexts;
-using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.EntityFrameworkCore;
 
 namespace CompanyEmployees.OAuth.Extensions

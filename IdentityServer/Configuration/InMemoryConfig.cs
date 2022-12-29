@@ -1,6 +1,6 @@
-﻿using IdentityServer4;
-using IdentityServer4.Models;
-using IdentityServer4.Test;
+﻿using Duende.IdentityServer;
+using Duende.IdentityServer.Models;
+using Duende.IdentityServer.Test;
 using System.Security.Claims;
 
 namespace IdentityServer.Configuration
